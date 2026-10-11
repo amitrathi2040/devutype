@@ -173,11 +173,17 @@ function startGame() {
     totalWords = 0;
     score = 0;
     typingInput.value = '';
+    typingInput.disabled = false;
     typingInput.focus();
     feedback.textContent = '';
     startBtn.textContent = '⏸ Playing...';
     startBtn.disabled = true;
     updateStats();
+    
+    // Scroll to typing area
+    setTimeout(() => {
+        typingInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
 }
 
 // Reset game
@@ -195,6 +201,9 @@ function resetGame() {
     progress.style.width = '0%';
     updateLetterDisplay();
     updateKeyboardHighlight();
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Check typing
