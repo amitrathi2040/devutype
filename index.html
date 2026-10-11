@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="trees-silhouette"></div>
     <div class="container">
         <header>
-            <h1>🎯 Typing Tutor</h1>
-            <p class="subtitle">Practice Makes Perfect!</p>
+            <h1>⛏️ Minecraft Typing</h1>
+            <p class="subtitle">Craft Your Skills! 🔨</p>
         </header>
 
         <div class="stats">
@@ -27,6 +28,12 @@
                 <span class="stat-label">Score</span>
                 <span class="stat-value" id="score">0</span>
             </div>
+        </div>
+
+        <!-- Deer Guardian -->
+        <div class="deer-guardian" id="deerGuardian">
+            <div class="deer" id="deer">🦌</div>
+            <div class="deer-distance" id="deerDistance">Far away</div>
         </div>
 
         <div class="mode-selector">
@@ -99,6 +106,13 @@
                 <button class="key" data-key="n">N</button>
                 <button class="key" data-key="m">M</button>
             </div>
+            <!-- Minecraft Blocks Decoration -->
+            <div class="mc-decoration">
+                <span class="mc-block grass">🟩</span>
+                <span class="mc-block dirt">🟫</span>
+                <span class="mc-block stone">⬜</span>
+                <span class="mc-block diamond">💎</span>
+            </div>
         </div>
 
         <div class="typing-area">
@@ -116,6 +130,33 @@
 
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="car-game" id="carGame" style="display: none;">
+            <h3>⛏️ Mining Time!</h3>
+            <p>Type words to mine blocks! ⛏️💎</p>
+            <div class="mining-area">
+                <div class="mine-field" id="mineField">
+                    <div class="block" data-type="stone">🪨</div>
+                    <div class="block" data-type="coal">⬛</div>
+                    <div class="block" data-type="iron">🟤</div>
+                    <div class="block" data-type="gold">🟡</div>
+                    <div class="block" data-type="diamond">💎</div>
+                    <div class="block" data-type="diamond">💎</div>
+                </div>
+                <div class="inventory">
+                    <div class="inv-slot"><span id="stone-count">0</span>🪨</div>
+                    <div class="inv-slot"><span id="coal-count">0</span>⬛</div>
+                    <div class="inv-slot"><span id="iron-count">0</span>🟤</div>
+                    <div class="inv-slot"><span id="gold-count">0</span>🟡</div>
+                    <div class="inv-slot"><span id="diamond-count">0</span>💎</div>
+                </div>
+            </div>
+            <div class="mining-stats">
+                <div class="mining-stat">Blocks Mined: <span id="blocksMined">0</span></div>
+                <div class="mining-stat">Score: <span id="mineScore">0</span></div>
+            </div>
+            <div class="mine-message" id="mineMessage">Type words to mine! 💪</div>
         </div>
 
         <footer>

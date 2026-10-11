@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #0a0e27 0%, #1a1a3e 50%, #2d1b69 100%);
+    background: linear-gradient(to bottom, #0a0e27 0%, #0d1b0e 50%, #1a2f1a 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@ body {
     overflow: hidden;
 }
 
-/* Stars animation */
+/* Forest atmosphere */
 body::before {
     content: '';
     position: absolute;
@@ -25,7 +25,7 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
         radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
         radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
         radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0)),
@@ -41,40 +41,103 @@ body::before {
     z-index: 0;
 }
 
-@keyframes twinkle {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 800px;
+/* Fireflies */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
-                0 0 40px rgba(102, 126, 234, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    position: relative;
+    height: 100%;
+    background-image: 
+        radial-gradient(3px 3px at 10% 20%, #ffeb3b, transparent),
+        radial-gradient(3px 3px at 30% 60%, #ffeb3b, transparent),
+        radial-gradient(2px 2px at 50% 40%, #ffeb3b, transparent),
+        radial-gradient(3px 3px at 70% 80%, #ffeb3b, transparent),
+        radial-gradient(2px 2px at 90% 30%, #ffeb3b, transparent);
+    animation: firefly 8s ease-in-out infinite;
+    pointer-events: none;
     z-index: 1;
 }
 
-/* Moon decoration */
-.container::before {
-    content: '🌙';
-    position: absolute;
-    top: -30px;
-    right: -20px;
-    font-size: 3em;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-    animation: float 3s ease-in-out infinite;
+@keyframes firefly {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+/* Trees silhouette */
+.trees-silhouette {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, #0a0f0a 0%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.trees-silhouette::before {
+    content: '🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+    opacity: 0.3;
+    filter: brightness(0.5);
+}
+
+.container {
+    background: rgba(20, 30, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 0;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(76, 175, 80, 0.2),
+                inset 0 0 30px rgba(0, 0, 0, 0.5);
+    border: 4px solid #1a2f1a;
+    position: relative;
+    z-index: 2;
+    image-rendering: pixelated;
+}
+
+/* Mystical forest border */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: repeating-linear-gradient(
+        45deg,
+        #1a3a1a 0px,
+        #1a3a1a 10px,
+        #2d4a2d 10px,
+        #2d4a2d 20px
+    );
+    z-index: -1;
+    border-radius: 4px;
+}
+
+/* Vine decoration */
+.container::after {
+    content: '🌿🍃🌿🍃🌿';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(-50%) rotate(-2deg); }
+    50% { transform: translateX(-50%) rotate(2deg); }
 }
 
 header {
@@ -182,6 +245,308 @@ h1 {
     background: #4caf50;
     border-color: #4caf50;
     color: white;
+}
+
+.car-game {
+    background: linear-gradient(135deg, rgba(26, 26, 62, 0.1) 0%, rgba(45, 27, 105, 0.1) 100%);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    text-align: center;
+}
+
+.car-game h3 {
+    color: #1a1a3e;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.car-game p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.race-track {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lane {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    position: relative;
+}
+
+.lane::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 40px);
+}
+
+.racer {
+    font-size: 2em;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.racer.moving {
+    animation: carBounce 0.3s ease-in-out;
+}
+
+@keyframes carBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.racer-label {
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    background: rgba(0,0,0,0.5);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.race-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.race-stat {
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.race-message {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #667eea;
+    min-height: 30px;
+    margin-top: 10px;
+}
+
+.mining-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.mine-field {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    flex: 1;
+}
+
+.block {
+    font-size: 2.5em;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.block.mining {
+    animation: mineAnimation 0.3s ease-in-out;
+}
+
+@keyframes mineAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8) rotate(5deg); }
+    100% { transform: scale(1); }
+}
+
+.block.collected {
+    opacity: 0.3;
+    transform: scale(0.9);
+}
+
+.inventory {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #5c3a1e;
+}
+
+.inv-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.mining-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.mining-stat {
+    background: linear-gradient(135deg, #5c3a1e 0%, #8b5a2b 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 2px solid #3d2510;
+}
+
+.mine-message {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #4a7c2e;
+    min-height: 30px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.deer-guardian {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: center;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #4a7c2e;
+}
+
+.deer {
+    font-size: 3em;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.deer.warning {
+    animation: deerWarning 0.5s ease-in-out infinite;
+}
+
+@keyframes deerWarning {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.deer.caught {
+    animation: deerCaught 0.3s ease-in-out;
+}
+
+@keyframes deerCaught {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5) rotate(10deg); }
+    100% { transform: scale(1); }
+}
+
+.deer-distance {
+    color: white;
+    font-size: 0.9em;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.deer-distance.close {
+    color: #ffeb3b;
+}
+
+.deer-distance.danger {
+    color: #f44336;
+    animation: pulse 0.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Caught overlay */
+.caught-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.caught-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.caught-content {
+    text-align: center;
+    color: white;
+    background: rgba(20, 30, 20, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    border: 4px solid #4a7c2e;
+    box-shadow: 0 0 40px rgba(76, 175, 80, 0.5);
+}
+
+.caught-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #ffeb3b;
+}
+
+.caught-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.caught-content button {
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: linear-gradient(135deg, #4a7c2e 0%, #2d4a2d 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.caught-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .keyboard {
