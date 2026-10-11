@@ -104,6 +104,23 @@ function updateKeyboardHighlight() {
             key.classList.add('completed');
         }
     });
+    
+    // Update letter buttons
+    const letterButtons = document.querySelectorAll('.letter-btn');
+    letterButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.letter === currentLetter) {
+            btn.classList.add('active');
+        }
+        
+        // Mark completed letters
+        if (lessonProgress[btn.dataset.letter] && 
+            lessonProgress[btn.dataset.letter].learn && 
+            lessonProgress[btn.dataset.letter].review && 
+            lessonProgress[btn.dataset.letter].test) {
+            btn.classList.add('completed');
+        }
+    });
 }
 
 // Load word/sentence based on mode and lesson
@@ -313,6 +330,21 @@ lessonButtons.forEach(btn => {
         currentLesson = btn.dataset.lesson;
         currentLetterIndex = 0;
         resetGame();
+    });
+});
+
+// Letter buttons
+const letterButtons = document.querySelectorAll('.letter-btn');
+letterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        letterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const letter = btn.dataset.letter;
+        const index = alphabet.indexOf(letter);
+        if (index !== -1) {
+            currentLetterIndex = index;
+            resetGame();
+        }
     });
 });
 
